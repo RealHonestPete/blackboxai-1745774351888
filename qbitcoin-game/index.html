@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QBitcoin Proof of Click</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Roboto Mono', monospace;
+      background-color: #121212;
+      color: #f2a900;
+    }
+    #bigBitcoin {
+      cursor: pointer;
+      transition: transform 0.1s ease;
+    }
+    #bigBitcoin:active {
+      transform: scale(0.95);
+    }
+    #captchaContainer {
+      display: none;
+      margin-top: 20px;
+      background: #222;
+      padding: 20px;
+      border: 2px solid #f2a900;
+      border-radius: 8px;
+      color: #f2a900;
+      text-align: center;
+      width: 300px;
+    }
+    #image {
+      font-size: 24px;
+      letter-spacing: 5px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      user-select: none;
+    }
+    #submit {
+      width: 100%;
+      padding: 8px;
+      font-size: 18px;
+      border: none;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      text-align: center;
+      background: #f2a900;
+      color: #121212;
+      font-weight: bold;
+    }
+    #checkCaptchaBtn {
+      background: #f2a900;
+      border: none;
+      padding: 8px 16px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+      color: #121212;
+    }
+    #key {
+      font-weight: bold;
+      margin-top: 10px;
+      min-height: 24px;
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+  <header class="bg-gray-900 p-4 flex justify-between items-center">
+    <h1 class="text-3xl font-bold">QBitcoin Proof of Click</h1>
+    <div>
+      <button id="connectWalletBtn" class="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600 transition">Connect Wallet</button>
+      <span id="userAddress" class="ml-4"></span>
+    </div>
+  </header>
+
+  <main class="flex-grow flex flex-col items-center justify-center p-8">
+    <div id="walletWarning" class="text-red-500 mb-4 hidden">Please connect your wallet to play and receive QBitcoin rewards.</div>
+    <div id="gameArea" class="flex flex-col items-center">
+      <div id="bigBitcoin" class="mb-6">
+        <i class="fab fa-bitcoin fa-9x"></i>
+      </div>
+      <div class="text-xl mb-4">QBitcoin Clicked: <span id="clickCount">0</span></div>
+      <div>
+        <button id="upgradePointerBtn" class="bg-yellow-500 text-black px-4 py-2 rounded cursor-not-allowed" disabled>Click above to prove</button>
+      </div>
+      <div id="captchaContainer">
+        <div id="image"></div>
+        <input type="text" id="submit" placeholder="Enter CAPTCHA" />
+        <button id="checkCaptchaBtn">Verify</button>
+        <div id="key"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-gray-900 p-4 text-center text-sm">
+    &copy; 2024 QBitcoin. Built on Ethereum.
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
